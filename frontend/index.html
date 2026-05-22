@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hemanth Photography Bengaluru and Studio</title>
+  
+  <meta name="description" content="Premium wedding and event photography brand based in Padmanabhanagar, Bengaluru.">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;700;900&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Phosphor Icons -->
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              green: '#4ade80',  // matches the neon green in the reference
+              dark: '#0f0f0f',
+              gray: '#151515',
+              border: '#2a2a2a'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Montserrat', 'sans-serif'],
+            tech: ['Orbitron', 'sans-serif'], // For the techy "Our Lens" look
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #0f0f0f;
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    /* Preloader Animation */
+    #preloader {
+      position: fixed;
+      inset: 0;
+      background: #000;
+      z-index: 9999;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: opacity 0.8s ease-in-out, visibility 0.8s ease-in-out;
+    }
+    
+    .glow-text {
+      font-size: 3rem;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      text-transform: uppercase;
+      color: #fff;
+      text-shadow: 0 0 10px rgba(74, 222, 128, 0.2),
+                   0 0 20px rgba(74, 222, 128, 0.4),
+                   0 0 40px rgba(74, 222, 128, 0.6),
+                   0 0 80px rgba(74, 222, 128, 0.8);
+      animation: pulse 2s infinite alternate;
+      letter-spacing: 4px;
+      text-align: center;
+    }
+
+    @keyframes pulse {
+      0% { text-shadow: 0 0 10px rgba(74, 222, 128, 0.2), 0 0 20px rgba(74, 222, 128, 0.4); transform: scale(1); }
+      100% { text-shadow: 0 0 20px rgba(74, 222, 128, 0.6), 0 0 40px rgba(74, 222, 128, 0.8), 0 0 80px #4ade80; transform: scale(1.05); }
+    }
+
+    /* Techy Text styling for "Our Lens" */
+    .tech-text {
+      color: white;
+      font-family: 'Orbitron', sans-serif;
+      position: relative;
+    }
+    /* Simple strikethrough effect like in the image */
+    .tech-text::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 50%;
+        width: 100%;
+        height: 4px;
+        background: white;
+        transform: translateY(-50%);
+    }
+
+    /* Camera Animation */
+    .rotating-camera {
+      animation: rotateCam 10s linear infinite;
+    }
+    @keyframes rotateCam {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Nav Glassmorphism */
+    .glass-nav {
+      background: rgba(15, 15, 15, 0.8);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    /* Hero Layout to match image exactly */
+    .hero-layout {
+      position: relative;
+    }
+    .hero-layout .hero-image {
+      position: absolute;
+      right: 0;
+      top: 0;
+      height: 100%;
+      width: 60%;
+      object-fit: cover;
+      z-index: 1;
+      mask-image: linear-gradient(to right, transparent, black 40%);
+      -webkit-mask-image: linear-gradient(to right, transparent, black 40%);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 10;
+    }
+  </style>
+</head>
+<body class="antialiased">
+
+  <!-- Preloader -->
+  <div id="preloader">
+    <div class="glow-text">Hemanth<br>Photography</div>
+  </div>
+
+  <!-- Floating Contact Buttons -->
+  <div class="fixed bottom-6 right-6 z-50 flex flex-col gap-4">
+    <!-- Call Button -->
+    <a href="tel:+918660554500" class="bg-blue-600 text-white p-4 rounded-full shadow-lg hover:scale-110 transition-transform duration-300 flex items-center justify-center">
+      <i class="ph-fill ph-phone-call text-2xl"></i>
+    </a>
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/918660554500" target="_blank" class="bg-[#25D366] text-white p-4 rounded-full shadow-lg hover:scale-110 transition-transform duration-300 flex items-center justify-center">
+      <i class="ph-fill ph-whatsapp-logo text-2xl"></i>
+    </a>
+  </div>
+
+  <!-- Navbar -->
+  <nav id="navbar" class="fixed w-full z-40 transition-all duration-300 py-6">
+    <div class="container mx-auto px-6 lg:px-12 flex justify-between items-center">
+      <!-- Logo -->
+      <a href="#" class="flex flex-col items-center group">
+        <div class="text-brand-green flex items-center gap-1 relative">
+          <i class="ph-fill ph-camera text-3xl group-hover:scale-110 transition-transform relative z-10"></i>
+          <!-- Small rotating highlight behind camera -->
+          <div class="absolute inset-0 bg-brand-green/20 rounded-full blur-md rotating-camera scale-150"></div>
+        </div>
+        <span class="text-white text-[10px] tracking-widest mt-1 font-medium font-sans uppercase">Hemanth Photography</span>
+      </a>
+      
+      <!-- Desktop Links -->
+      <div class="hidden md:flex items-center space-x-10 text-sm">
+        <a href="#home" class="text-brand-green border-b-2 border-brand-green pb-1 font-medium">Home</a>
+        <a href="#blog" class="text-gray-300 hover:text-white transition-colors">Blog</a>
+        <a href="#wedding" class="text-gray-300 hover:text-white transition-colors">Wedding</a>
+        <a href="#gallery" class="text-gray-300 hover:text-white transition-colors">Gallery</a>
+        <a href="#contact" class="text-gray-300 hover:text-white transition-colors">Contacts</a>
+        <a href="#contact" class="bg-[#419441] text-white px-6 py-2 hover:bg-brand-green hover:text-brand-dark transition-colors duration-300 rounded-sm">
+          Book Now
+        </a>
+      </div>
+
+      <!-- Mobile toggle -->
+      <button id="mobile-toggle" class="md:hidden text-white text-3xl z-50 relative outline-none">
+        <i id="mobile-icon" class="ph ph-list"></i>
+      </button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="fixed inset-0 bg-brand-dark/95 backdrop-blur-xl flex-col items-center justify-center space-y-8 text-xl translate-x-full transition-transform duration-300 ease-in-out hidden z-40">
+      <a href="#home" class="mobile-link text-brand-green font-medium">Home</a>
+      <a href="#blog" class="mobile-link text-white hover:text-brand-green transition-colors">Blog</a>
+      <a href="#wedding" class="mobile-link text-white hover:text-brand-green transition-colors">Wedding</a>
+      <a href="#gallery" class="mobile-link text-white hover:text-brand-green transition-colors">Gallery</a>
+      <a href="#contact" class="mobile-link text-white hover:text-brand-green transition-colors">Contacts</a>
+      <a href="#contact" class="mobile-link bg-[#419441] text-white px-8 py-3 rounded-sm mt-4">Book Now</a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero-layout min-h-[90vh] bg-brand-dark flex items-center pt-20">
+    <!-- Camera Background Matching UI -->
+    <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=2000&auto=format&fit=crop" class="hero-image grayscale opacity-80" alt="Camera Lens Hands">
+    
+    <div class="container mx-auto px-6 lg:px-12 relative z-10">
+      <div class="max-w-2xl hero-content pt-12 md:pt-0">
+        
+        <!-- Rotating Camera Graphic Elements Top Left of text if desired, but we put it in logo. Let's add a subtle ambient animated camera element here -->
+        <div class="absolute -top-10 -left-10 text-brand-green/5 rotating-camera z-[-1] pointer-events-none w-64 h-64 flex items-center justify-center">
+            <i class="ph-thin ph-aperture text-[200px]"></i>
+        </div>
+
+        <h1 class="text-[4rem] sm:text-[6rem] lg:text-[7.5rem] font-bold uppercase tracking-tight leading-[0.95] mb-6">
+          <span class="text-[#3b9f3b] block font-display tracking-tightest" style="letter-spacing: -2px;">Your Story,</span>
+          <!-- Techy split font for Our Lens -->
+          <span class="text-white block font-display font-black mt-2 tracking-tighter relative inline-block">
+             <span class="relative z-10 tech-text uppercase">Our Lens</span>
+          </span>
+        </h1>
+        
+        <div class="mt-8 mb-10 text-gray-300 text-base md:text-lg max-w-lg font-light leading-relaxed">
+          <p>We capture emotions, stories, and details with a creative and cinematic touch, Authentic photography that speaks without words.</p>
+        </div>
+
+        <a href="#contact" class="inline-block bg-[#419441] text-white px-8 py-3 text-sm font-medium hover:bg-brand-green hover:text-brand-dark transition-all duration-300 rounded-sm">
+          Book Now
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Bar (Matching Image exactly) -->
+  <section class="bg-brand-dark border-t border-b border-[#222] py-8 relative z-20">
+    <div class="container mx-auto px-6 lg:px-12 flex flex-col lg:flex-row items-center justify-between gap-8">
+      
+      <div class="lg:w-1/3">
+        <p class="text-gray-400 text-sm leading-relaxed max-w-sm">
+          We create cinematic videos that tell your story with emotion, motion, and impact.
+        </p>
+      </div>
+
+      <div class="lg:w-2/3 flex flex-wrap justify-center lg:justify-between w-full gap-6">
+        <div class="flex flex-col items-center gap-3 cursor-pointer group">
+          <i class="ph-fill ph-camera text-2xl text-white group-hover:text-brand-green transition-colors"></i>
+          <span class="text-xs text-gray-300 group-hover:text-white">Photography</span>
+        </div>
+        <div class="flex flex-col items-center gap-3 cursor-pointer group">
+          <div class="relative">
+            <i class="ph-fill ph-user-focus text-2xl text-white group-hover:text-brand-green transition-colors"></i>
+          </div>
+          <span class="text-xs text-gray-300 group-hover:text-white">Cinematography</span>
+        </div>
+        <div class="flex flex-col items-center gap-3 cursor-pointer group">
+          <i class="ph-fill ph-briefcase text-2xl text-white group-hover:text-brand-green transition-colors"></i>
+          <span class="text-xs text-gray-300 group-hover:text-white">Corporate Films</span>
+        </div>
+        <div class="flex flex-col items-center gap-3 cursor-pointer group">
+          <i class="ph-fill ph-film-strip text-2xl text-white group-hover:text-brand-green transition-colors"></i>
+          <span class="text-xs text-gray-300 group-hover:text-white">Reels & Shorts</span>
+        </div>
+        <div class="flex flex-col items-center gap-3 cursor-pointer group">
+          <i class="ph-fill ph-drone text-2xl text-white group-hover:text-brand-green transition-colors"></i>
+          <span class="text-xs text-gray-300 group-hover:text-white">Drone Videography</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- About Us Section -->
+  <section id="about" class="py-24 bg-brand-gray relative">
+    <div class="container mx-auto px-6 lg:px-12 text-center">
+      <h2 class="text-4xl md:text-5xl font-display font-bold uppercase mb-12">
+        <span class="text-brand-green">About</span> Us
+      </h2>
+
+      <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-12 text-left">
+        <!-- Story -->
+        <div class="w-full md:w-1/2">
+          <h3 class="text-2xl font-bold mb-4">Crafting Visual Legacies Since a Decade</h3>
+          <p class="text-gray-400 leading-relaxed mb-6">
+            Located in the heart of Padmanabhanagar, Bengaluru, <strong>Hemanth Photography Bengaluru and Studio</strong> represents the pinnacle of luxury wedding and event photography. 
+          </p>
+          <p class="text-gray-400 leading-relaxed">
+            We don't just click pictures; we curate the essence of your most vibrant moments. Our cinematic approach ensures every tear, every smile, and every grand ritual is immortalized in frames that will echo through generations. 
+          </p>
+          
+          <div class="flex gap-8 mt-8 border-t border-[#333] pt-6">
+            <div>
+              <h4 class="text-[#3b9f3b] text-3xl font-black">10+</h4>
+              <span class="text-xs text-gray-500 uppercase tracking-widest mt-1 block">Years Exp</span>
+            </div>
+            <div>
+              <h4 class="text-[#3b9f3b] text-3xl font-black">500+</h4>
+              <span class="text-xs text-gray-500 uppercase tracking-widest mt-1 block">Events</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Studio Map Image acting as a Google Maps Link -->
+        <div class="w-full md:w-1/2">
+          <a href="https://www.google.com/maps/search/?api=1&query=Hemanth+Photography+Padmanabhanagar+Bengaluru" target="_blank" class="block group relative rounded-lg overflow-hidden border border-[#333] shadow-2xl">
+            <!-- Map Placeholder Image -->
+            <img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?q=80&w=1000&auto=format&fit=crop" class="w-full h-[350px] object-cover group-hover:scale-105 transition-transform duration-500 blur-[2px] group-hover:blur-none" alt="Studio Location Map">
+            
+            <div class="absolute inset-0 bg-black/50 group-hover:bg-black/20 transition-colors flex flex-col items-center justify-center">
+              <i class="ph-fill ph-map-pin text-5xl text-[#3b9f3b] mb-3 group-hover:-translate-y-2 transition-transform duration-300"></i>
+              <span class="text-white font-medium bg-black/60 px-4 py-2 rounded-full backdrop-blur-sm">View Studio on Maps</span>
+              <span class="text-gray-300 text-sm mt-3 text-center px-6">Padmanabhanagar, Bengaluru</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Wedding Section -->
+  <section id="wedding" class="py-24 bg-brand-dark">
+    <div class="container mx-auto px-6 lg:px-12">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-display font-bold uppercase">
+          <span class="text-white">Our </span><span class="text-brand-green">Weddings</span>
+        </h2>
+        <p class="text-gray-400 mt-4 max-w-2xl mx-auto">Capturing the most beautiful moments of your special day with our signature cinematic style.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="group overflow-hidden rounded-lg relative">
+          <img src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1000&auto=format&fit=crop" class="w-full h-[400px] object-cover group-hover:scale-110 transition-transform duration-700" alt="South Indian Wedding">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end p-8">
+            <h3 class="text-2xl font-bold text-white">Traditional Ceremonies</h3>
+          </div>
+        </div>
+        <div class="group overflow-hidden rounded-lg relative">
+          <img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?q=80&w=1000&auto=format&fit=crop" class="w-full h-[400px] object-cover group-hover:scale-110 transition-transform duration-700" alt="Couple portrait">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end p-8">
+            <h3 class="text-2xl font-bold text-white">Couple Portraits</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery Section -->
+  <section id="gallery" class="py-24 bg-brand-gray">
+    <div class="container mx-auto px-6 lg:px-12">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-display font-bold uppercase">
+          <span class="text-white">Portfolio </span><span class="text-brand-green">Gallery</span>
+        </h2>
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <img src="https://images.unsplash.com/photo-1606800052052-a08af7148866?q=80&w=600&auto=format&fit=crop" class="w-full h-64 object-cover rounded-md hover:opacity-80 transition-opacity cursor-pointer shadow-lg" alt="Gallery Image 1">
+        <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=600&auto=format&fit=crop" class="w-full h-64 object-cover rounded-md hover:opacity-80 transition-opacity cursor-pointer md:col-span-2 shadow-lg" alt="Gallery Image 2">
+        <img src="https://images.unsplash.com/photo-1542038784456-1ea8e935640e?q=80&w=600&auto=format&fit=crop" class="w-full h-64 object-cover rounded-md hover:opacity-80 transition-opacity cursor-pointer shadow-lg" alt="Gallery Image 3">
+        <img src="https://images.unsplash.com/photo-1551316679-9c6ae9dec224?q=80&w=600&auto=format&fit=crop" class="w-full h-64 object-cover rounded-md hover:opacity-80 transition-opacity cursor-pointer lg:col-span-2 shadow-lg" alt="Gallery Image 4">
+        <img src="https://images.unsplash.com/photo-1511895426328-dc8714191300?q=80&w=600&auto=format&fit=crop" class="w-full h-64 object-cover rounded-md hover:opacity-80 transition-opacity cursor-pointer shadow-lg" alt="Gallery Image 5">
+        <img src="https://images.unsplash.com/photo-1532712938310-34cb3982ef74?q=80&w=600&auto=format&fit=crop" class="w-full h-64 object-cover rounded-md hover:opacity-80 transition-opacity cursor-pointer shadow-lg" alt="Gallery Image 6">
+      </div>
+    </div>
+  </section>
+
+  <!-- Blog Section -->
+  <section id="blog" class="py-24 bg-brand-dark">
+    <div class="container mx-auto px-6 lg:px-12">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-display font-bold uppercase">
+          <span class="text-white">Our </span><span class="text-brand-green">Blog</span>
+        </h2>
+        <p class="text-gray-400 mt-4 max-w-2xl mx-auto">Insights, stories, and tips from behind the lens.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Blog Post 1 -->
+        <div class="bg-brand-gray rounded-lg overflow-hidden border border-[#222] hover:border-brand-green/50 transition-colors group cursor-pointer">
+          <div class="overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=800&auto=format&fit=crop" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500" alt="Blog Post">
+          </div>
+          <div class="p-6">
+            <span class="text-brand-green text-xs font-bold uppercase tracking-wider mb-2 block">Tips & Tricks</span>
+            <h3 class="text-xl font-bold mb-3 text-white">How to pose naturally for wedding portraits</h3>
+            <p class="text-gray-400 text-sm mb-4">Discover the secret to looking effortless and elegant in your special day photographs.</p>
+            <span class="text-brand-green text-sm flex items-center gap-1 group-hover:underline">Read More <i class="ph-bold ph-arrow-right"></i></span>
+          </div>
+        </div>
+        <!-- Blog Post 2 -->
+        <div class="bg-brand-gray rounded-lg overflow-hidden border border-[#222] hover:border-brand-green/50 transition-colors group cursor-pointer">
+          <div class="overflow-hidden">
+             <img src="https://images.unsplash.com/photo-1452587925148-ce544e77e70d?q=80&w=800&auto=format&fit=crop" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500" alt="Blog Post">
+          </div>
+          <div class="p-6">
+            <span class="text-brand-green text-xs font-bold uppercase tracking-wider mb-2 block">Behind The Scenes</span>
+            <h3 class="text-xl font-bold mb-3 text-white">The gear we use for cinematic videography</h3>
+            <p class="text-gray-400 text-sm mb-4">A deep dive into our camera bodies, lenses, and drones that make the magic happen.</p>
+            <span class="text-brand-green text-sm flex items-center gap-1 group-hover:underline">Read More <i class="ph-bold ph-arrow-right"></i></span>
+          </div>
+        </div>
+        <!-- Blog Post 3 -->
+        <div class="bg-brand-gray rounded-lg overflow-hidden border border-[#222] hover:border-brand-green/50 transition-colors group cursor-pointer">
+          <div class="overflow-hidden">
+             <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=800&auto=format&fit=crop" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500" alt="Blog Post">
+          </div>
+          <div class="p-6">
+            <span class="text-brand-green text-xs font-bold uppercase tracking-wider mb-2 block">Events</span>
+            <h3 class="text-xl font-bold mb-3 text-white">Highlights from the Bengaluru Tech Summit</h3>
+            <p class="text-gray-400 text-sm mb-4">Check out our latest corporate coverage from one of India's biggest tech conventions.</p>
+            <span class="text-brand-green text-sm flex items-center gap-1 group-hover:underline">Read More <i class="ph-bold ph-arrow-right"></i></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-24 bg-brand-gray border-t border-[#222]">
+    <div class="container mx-auto px-6 lg:px-12">
+      <div class="flex flex-col lg:flex-row gap-16 items-center">
+        <div class="lg:w-1/2">
+          <h2 class="text-4xl md:text-5xl font-display font-bold uppercase mb-6">
+            <span class="text-white">Let's </span><span class="text-brand-green">Talk</span>
+          </h2>
+          <p class="text-gray-400 mb-8 max-w-md">Ready to capture your next big moment? Reach out to us for bookings, inquiries, and custom packages.</p>
+          
+          <div class="space-y-6">
+            <div class="flex items-center gap-4">
+              <div class="w-12 h-12 bg-[#222] rounded-full flex items-center justify-center text-brand-green text-xl"><i class="ph-fill ph-phone"></i></div>
+              <div>
+                <p class="text-xs text-gray-500 uppercase tracking-wider">Phone</p>
+                <p class="text-white font-medium"><a href="tel:+918660554500" class="hover:text-brand-green transition-colors">+91 866 055 4500</a></p>
+              </div>
+            </div>
+            <div class="flex items-center gap-4">
+              <div class="w-12 h-12 bg-[#222] rounded-full flex items-center justify-center text-brand-green text-xl"><i class="ph-fill ph-envelope-simple"></i></div>
+              <div>
+                <p class="text-xs text-gray-500 uppercase tracking-wider">Email</p>
+                <p class="text-white font-medium"><a href="mailto:hello@hemanthphotography.com" class="hover:text-brand-green transition-colors">hello@hemanthphotography.com</a></p>
+              </div>
+            </div>
+            <div class="flex items-center gap-4">
+              <div class="w-12 h-12 bg-[#222] rounded-full flex items-center justify-center text-brand-green text-xl"><i class="ph-fill ph-map-pin"></i></div>
+              <div>
+                <p class="text-xs text-gray-500 uppercase tracking-wider">Studio</p>
+                <p class="text-white font-medium">Padmanabhanagar, Bengaluru</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="lg:w-1/2 bg-brand-dark p-8 rounded-xl border border-[#333] w-full">
+          <form class="flex flex-col gap-5">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+              <input type="text" placeholder="Your Name" class="bg-[#151515] border border-[#333] text-white px-4 py-3 rounded focus:outline-none focus:border-brand-green transition-colors w-full placeholder-gray-600">
+              <input type="email" placeholder="Your Email" class="bg-[#151515] border border-[#333] text-white px-4 py-3 rounded focus:outline-none focus:border-brand-green transition-colors w-full placeholder-gray-600">
+            </div>
+            <input type="text" placeholder="Subject / Event Type" class="bg-[#151515] border border-[#333] text-white px-4 py-3 rounded focus:outline-none focus:border-brand-green transition-colors w-full placeholder-gray-600">
+            <textarea placeholder="Tell us more about your event..." rows="5" class="bg-[#151515] border border-[#333] text-white px-4 py-3 rounded focus:outline-none focus:border-brand-green transition-colors w-full resize-none placeholder-gray-600"></textarea>
+            <button type="button" class="bg-[#419441] text-white font-bold py-4 rounded hover:bg-brand-green hover:text-brand-dark transition-colors duration-300 mt-2">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Script for Preloader and Navbar -->
+  <script>
+    // 1. Preloader Logic
+    window.addEventListener('load', () => {
+      // Keep preloader for an extra 1.5 seconds for dramatic entry
+      setTimeout(() => {
+        const preloader = document.getElementById('preloader');
+        preloader.style.opacity = '0';
+        setTimeout(() => {
+          preloader.style.display = 'none';
+        }, 800); 
+      }, 1500);
+    });
+
+    // 2. Navbar Scroll Logic
+    window.addEventListener('scroll', () => {
+      const nav = document.getElementById('navbar');
+      if (window.scrollY > 50) {
+        nav.classList.add('glass-nav');
+        nav.classList.remove('py-6');
+        nav.classList.add('py-4');
+      } else {
+        nav.classList.remove('glass-nav');
+        nav.classList.add('py-6');
+        nav.classList.remove('py-4');
+      }
+    });
+
+    // 3. Mobile Menu Toggle Logic
+    const mobileToggle = document.getElementById('mobile-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileIcon = document.getElementById('mobile-icon');
+    const mobileLinks = document.querySelectorAll('.mobile-link');
+    
+    let isMenuOpen = false;
+
+    function toggleMenu() {
+      isMenuOpen = !isMenuOpen;
+      if (isMenuOpen) {
+        mobileMenu.classList.remove('hidden');
+        // small timeout to allow display:flex to apply before transition
+        setTimeout(() => {
+          mobileMenu.classList.remove('translate-x-full');
+          mobileMenu.classList.add('flex');
+        }, 10);
+        mobileIcon.classList.replace('ph-list', 'ph-x');
+        document.body.style.overflow = 'hidden'; // prevent scrolling
+      } else {
+        mobileMenu.classList.add('translate-x-full');
+        setTimeout(() => {
+          mobileMenu.classList.add('hidden');
+          mobileMenu.classList.remove('flex');
+        }, 300);
+        mobileIcon.classList.replace('ph-x', 'ph-list');
+        document.body.style.overflow = '';
+      }
+    }
+
+    mobileToggle.addEventListener('click', toggleMenu);
+
+    // Close mobile menu when a link is clicked
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        if (isMenuOpen) toggleMenu();
+      });
+    });
+  </script>
+</body>
+</html>
